@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -34,6 +35,13 @@ public class Main2Activity extends AppCompatActivity {
                 Intent intent=new Intent(Main2Activity.this,Main3Activity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        
+        btninfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Main2Activity.this, "A neved: "+tweredmeny.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }

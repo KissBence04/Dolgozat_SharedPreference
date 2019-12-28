@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Harmadik Activity"
-        android:textSize="50dp"
+        android:textSize="45dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/twFelirat"/>
 
     <Button
