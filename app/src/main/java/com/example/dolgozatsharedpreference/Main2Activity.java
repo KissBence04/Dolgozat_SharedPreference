@@ -18,7 +18,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private Button btnatlep,btnNevvalt,btninfo,btnKilep;
     private TextView tweredmeny;
-    private AlertDialog alertDialog;
+    private AlertDialog alertDialog,alertDialog2;
     private AlertDialog.Builder alertDialogBuilder;
 
     @Override
@@ -33,6 +33,7 @@ public class Main2Activity extends AppCompatActivity {
         seged = sharedPreferences.getString("nev","Nincs elmentve a neved!");
 
         tweredmeny.setText(seged);
+
 
         btnatlep.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,9 +64,18 @@ public class Main2Activity extends AppCompatActivity {
         btnKilep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                restartActivity();
+                alertDialog2.show();
+
                 alertDialog.show();
+
+
+
             }
         });
+
+
+
     }
 
     public void init() {
@@ -91,5 +101,26 @@ public class Main2Activity extends AppCompatActivity {
         });
         alertDialogBuilder.setCancelable(false);
         alertDialog = alertDialogBuilder.create();
+    }
+
+    public void restartActivity(){
+        alertDialogBuilder = new AlertDialog.Builder(Main2Activity.this);
+        alertDialogBuilder.setMessage("Üdvözöljük újra "+tweredmeny.getText().toString());
+        alertDialogBuilder.setPositiveButton("Folytatom", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alertDialogBuilder.setNegativeButton("Új profil", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent=new Intent(Main2Activity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        alertDialogBuilder.setCancelable(false);
+        alertDialog2 = alertDialogBuilder.create();
     }
 }
