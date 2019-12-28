@@ -1,8 +1,10 @@
 package com.example.dolgozatsharedpreference;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ public class Main2Activity extends AppCompatActivity {
 
     private Button btnatlep,btnNevvalt,btninfo,btnKilep;
     private TextView tweredmeny;
+    private AlertDialog alertDialog;
+    private AlertDialog.Builder alertDialogBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,13 @@ public class Main2Activity extends AppCompatActivity {
                 Toast.makeText(Main2Activity.this, "A neved: "+tweredmeny.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        btnKilep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.show();
+            }
+        });
     }
 
     public void init(){
@@ -52,5 +63,25 @@ public class Main2Activity extends AppCompatActivity {
         btninfo=findViewById(R.id.btnInfo);
         btnKilep=findViewById(R.id.btnKilep);
         tweredmeny=findViewById(R.id.twEredmeny);
+
+        alertDialogBuilder = new AlertDialog.Builder(Main2Activity.this);
+
+        alertDialogBuilder.setMessage("Ki akarsz lépni az alkalmazásból?");
+
+        alertDialogBuilder.setPositiveButton("Folytatom", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("Kilépés", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        alertDialogBuilder.setCancelable(false);
+        alertDialog = alertDialogBuilder.create();
     }
 }
