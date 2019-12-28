@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,16 @@ public class Main2Activity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnNevvalt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Main2Activity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(Main2Activity.this,"Név megváltozatva",Toast.LENGTH_SHORT).show();
+            }
+        });
         
         btninfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,24 +68,21 @@ public class Main2Activity extends AppCompatActivity {
         });
     }
 
-    public void init(){
-        btnatlep=findViewById(R.id.btnAtlepes);
-        btnNevvalt=findViewById(R.id.btnNevValt);
-        btninfo=findViewById(R.id.btnInfo);
-        btnKilep=findViewById(R.id.btnKilep);
-        tweredmeny=findViewById(R.id.twEredmeny);
+    public void init() {
+        btnatlep = findViewById(R.id.btnAtlepes);
+        btnNevvalt = findViewById(R.id.btnNevValt);
+        btninfo = findViewById(R.id.btnInfo);
+        btnKilep = findViewById(R.id.btnKilep);
+        tweredmeny = findViewById(R.id.twEredmeny);
 
         alertDialogBuilder = new AlertDialog.Builder(Main2Activity.this);
-
         alertDialogBuilder.setMessage("Ki akarsz lépni az alkalmazásból?");
-
         alertDialogBuilder.setPositiveButton("Folytatom", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
-
         alertDialogBuilder.setNegativeButton("Kilépés", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
